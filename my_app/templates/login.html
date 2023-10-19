@@ -1,0 +1,30 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link rel="stylesheet" href="/static/bootstrap/css/bootstrap.css">
+</head>
+<body>
+    <div class="box">
+        <h2 style="text-align: center; color: #555; padding: 2px 10px; background: white; border-radius: 10px;"><span style="color: red;font-size: 80px;">+</span><span style="color: orange;">DISPENSARY</span></h2> 
+        {% for msg in messages %}
+        <div class="alert alert-{{msg.level_tag}} alert-dismissible fade show  name" role="alert" >
+          <strong> {{msg.message}}</strong>
+          <button type="button" class="btn-close name1" data-bs-dismiss="alert" aria-label="close"></button>
+      </div>
+      {% endfor %}   
+        <form action="" method="POST">
+            {% csrf_token %}
+            <input type="text" name="username" placeholder="Enter your username" value="{{username}}">
+            <input type="password" name="password" placeholder="Enter your password" value="{{password}}">
+            <button class="btn btn-success">Login</button>
+        </form>
+        <p>Already have an account? <a href="{% url 'register' %}">Register</a></p>
+    </div>
+    <script src="/static/bootstrap/js/bootstrap.js"></script>
+</body>
+</html>
